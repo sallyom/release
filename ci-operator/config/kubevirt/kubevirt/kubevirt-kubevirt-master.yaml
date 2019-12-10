@@ -18,3 +18,9 @@ resources:
 tag_specification:
   name: "4.2"
   namespace: ocp
+tests:
+- as: "dummy-test"
+  commands: |
+    echo "this is a dummy"
+  container:
+    from: src
