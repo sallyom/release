@@ -9,7 +9,6 @@ presubmits:
     decoration_config:
       skip_cloning: true
     labels:
-      ci-operator.openshift.io/prowgen-controlled: "true"
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-kubevirt-kubevirt-master-kubevirt-e2e-test
     path_alias: kubevirt.io/kubevirt
@@ -115,7 +114,7 @@ presubmits:
           name: cluster-profile
         - mountPath: /usr/local/kubevirt-e2e-test
           name: job-definition
-          subPath: cluster-launch-installer-src.yaml
+          subPath: cluster-launch-installer-libvirt-e2e.yaml
         - mountPath: /etc/sentry-dsn
           name: sentry-dsn
           readOnly: true
@@ -129,7 +128,7 @@ presubmits:
           - configMap:
               name: cluster-profile-gcp
       - configMap:
-          name: prow-job-cluster-launch-installer-src
+          name: prow-job-cluster-launch-installer-libvirt-e2e
         name: job-definition
       - name: sentry-dsn
         secret:
