@@ -124,8 +124,17 @@ presubmits:
             export GOBIN="/usr/bin"
             source /etc/profile.d/gimme.sh
 
+            echo "creating manifests"
+            bash -x ./hack/build-manifests.sh
+
             echo "checking configuration location"
             echo "KUBECONFIG: ${KUBECONFIG}"
+
+            echo "patching cluster-up external provider"
+            (
+              cd cluster-up/cluster/external
+              curl -L -O -o provider.sh https://raw.githubusercontent.com/dhiller/kubevirtci/fix-external-provider/cluster-up/cluster/external/provider.sh
+            )
 
             echo "calling cluster-up to prepare config and check whether cluster is reachable"
             bash -x ./cluster-up/up.sh
@@ -140,6 +149,8 @@ presubmits:
             oc get pods -n kubevirt
 
             echo "testing"
+            go get -u github.com/onsi/ginkgo/ginkgo
+            bash -x ./hack/build-func-tests.sh
             bash -x ./hack/functests.sh
         image: ci-operator:latest
         imagePullPolicy: Always
@@ -152,7 +163,7 @@ presubmits:
           name: cluster-profile
         - mountPath: /usr/local/kubevirt-e2e-test
           name: job-definition
-          subPath: cluster-launch-installer-libvirt-e2e.yaml
+          subPath: cluster-launch-installer-libvirt-src.yaml
         - mountPath: /etc/sentry-dsn
           name: sentry-dsn
           readOnly: true

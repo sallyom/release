@@ -7,30 +7,6 @@ build_root:
   project_image:
     context_dir: hack/kubevirt-builder
     dockerfile_path: Dockerfile
-binary_build_commands: |
-    set -euo pipefail
-
-    export DOCKER_PREFIX='dhiller'
-    export DOCKER_TAG="latest"
-    export KUBEVIRT_PROVIDER=external
-
-    export GIMME_GO_VERSION=1.12.8
-    export GOPATH="/go"
-    export GOBIN="/usr/bin"
-    source /etc/profile.d/gimme.sh
-
-    echo "patching cluster-up external provider"
-    (
-      cd cluster-up/cluster/external
-      curl -L -O -o provider.sh https://raw.githubusercontent.com/dhiller/kubevirtci/fix-external-provider/cluster-up/cluster/external/provider.sh
-    )
-
-    echo "building manifests"
-    bash -x ./hack/build-manifests.sh
-
-    echo "building test binary"
-    go get -u github.com/onsi/ginkgo/ginkgo
-    bash -x ./hack/build-func-tests.sh
 canonical_go_repository: kubevirt.io/kubevirt
 resources:
   '*':
