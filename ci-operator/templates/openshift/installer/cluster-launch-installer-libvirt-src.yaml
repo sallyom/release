@@ -17,7 +17,7 @@ parameters:
 - name: IMAGE_TESTS
   required: true
 - name: CLUSTER_TYPE
-  value: "libvirt"
+  value: "gcp"
 - name: TEST_COMMAND
   required: true
 - name: RELEASE_IMAGE_LATEST
