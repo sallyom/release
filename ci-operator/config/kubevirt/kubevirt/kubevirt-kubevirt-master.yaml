@@ -39,6 +39,5 @@ tests:
     ./hack/ci/test.sh
   openshift_installer_custom_test_image:
     cluster_profile: gcp
-    from: pipeline:kubevirt-test
+    from: stable:kubevirt-test
     enable_nested_virt: true
-    nested_virt_image: rhcos43-nested-virt

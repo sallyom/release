@@ -49,7 +49,7 @@ presubmits:
             cd /go/src/kubevirt.io/kubevirt
             ./hack/ci/test.sh
         - name: TEST_IMAGESTREAM_TAG
-          value: pipeline:kubevirt-test
+          value: stable:kubevirt-test
         image: ci-operator:latest
         imagePullPolicy: Always
         name: ""
