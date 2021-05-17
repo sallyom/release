@@ -1,0 +1,29 @@
+binary_build_commands: make build BUILD_LOCAL=0
+build_root:
+  image_stream_tag:
+    name: release
+    namespace: openshift
+    tag: golang-1.16
+canonical_go_repository: openshift/microshift
+promotion:
+  name: "4.8"
+  namespace: ocp
+resources:
+  '*':
+    limits:
+      memory: 4Gi
+    requests:
+      cpu: 100m
+      memory: 200Mi
+tag_specification:
+  name: "4.8"
+  namespace: ocp
+tests:
+- as: verify
+  commands: sh ./verify.sh
+  container:
+    from: src
+zz_generated_metadata:
+  branch: main
+  org: redhat-et
+  repo: microshift

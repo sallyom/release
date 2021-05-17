@@ -2251,6 +2251,7 @@ tide:
     - openshift/tektoncd-triggers
     - openshift/verification-tests
     - openstack-k8s-operators/osp-director-operator
+    - redhat-et/microshift
   - labels:
     - lgtm
     - approved
