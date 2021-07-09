@@ -1,0 +1,15 @@
+{
+	"path": "ipi/aws/scribe-csi/ipi-aws-scribe-csi-workflow.yaml",
+	"owners": {
+		"approvers": [
+			"cooktheryan",
+			"screeley44",
+			"johnstrunk"
+		],
+		"reviewers": [
+			"cooktheryan",
+			"screeley44",
+			"johnstrunk"
+		]
+	}
+}

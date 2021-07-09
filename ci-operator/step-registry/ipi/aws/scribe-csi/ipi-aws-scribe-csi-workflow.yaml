@@ -1,0 +1,11 @@
+workflow:
+  as: ipi-aws-scribe-csi
+  steps:
+    pre:
+    - chain: ipi-conf-aws
+    - chain: ipi-install
+    - ref: scribe-csi-conf-aws
+    post:
+    - chain: ipi-deprovision
+  documentation: |-
+    OpenShift cluster configured with volume snapshot and clone capabilities required for Scribe functionality. Default CSI storage configured.

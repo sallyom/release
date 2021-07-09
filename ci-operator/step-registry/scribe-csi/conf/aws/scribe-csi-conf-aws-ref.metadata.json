@@ -1,0 +1,15 @@
+{
+	"path": "scribe-csi/conf/aws/scribe-csi-conf-aws-ref.yaml",
+	"owners": {
+		"approvers": [
+			"cooktheryan",
+			"johnstrunk",
+			"screeley44"
+		],
+		"reviewers": [
+			"cooktheryan",
+			"johnstrunk",
+			"screeley44"
+		]
+	}
+}

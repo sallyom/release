@@ -1,0 +1,21 @@
+ref:
+  as: scribe-csi-conf-aws
+  from: src-oc
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 500Mi
+  commands: scribe-csi-conf-aws-commands.sh
+  env:
+    - name: SCRIBE_OPERATOR
+      default: "pipeline:scribe"
+    - name: MOVER_RSYNC
+      default: "pipeline:scribe-mover-rsync"
+    - name: MOVER_RCLONE
+      default: "pipeline:scribe-mover-rclone"
+    - name: MOVER_RESTIC
+      default: "pipeline:scribe-mover-restic"
+  documentation: |-
+    Volume snapshot and clone capabilities are required for some Scribe functionality.
+    Default CSI storage is configured along with a VolumeSnapshotClass. The Scribe operator is also
+    installed.
